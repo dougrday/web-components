@@ -12,18 +12,12 @@ export class LikeButton extends React.Component {
   }
 
   render() {
-    if (this.state.liked) {
-      return React.createElement(
-        "mwc-button",
-        { onClick: () => this.setState({ liked: false }) },
-        this.props.likedtext ?? "Unlike"
-      );
-    }
+    const text = this.state.liked ? (this.props.likedtext ?? "Unlike") : "Like";
 
     return React.createElement(
       "mwc-button",
-      { onClick: () => this.setState({ liked: true }) },
-      "Like"
+      { onClick: () => this.setState({ liked: !this.state.liked }) },
+      text
     );
   }
 }

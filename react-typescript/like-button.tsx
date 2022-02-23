@@ -36,7 +36,7 @@ export class LikeButton extends React.Component<
   }
 
   render() {
-    const text = this.state.liked ? (this.props.likedtext ?? "Unlike") : "Like";
-    return <mwc-button onClick={() => this.handleClick()}>{ text }</mwc-button>;
+    const text = this.state.liked ? this.props.likedtext ?? "Unlike" : "Like";
+    return <mwc-button onClick={() => this.handleClick()}>{text}</mwc-button>;
   }
 }

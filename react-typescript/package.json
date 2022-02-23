@@ -13,8 +13,7 @@
     "prop-types": "^15.8.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-to-webcomponent": "^1.5.1",
-    "react-web-component": "^2.0.2"
+    "react-to-webcomponent": "^1.5.1"
   },
   "devDependencies": {
     "@types/prop-types": "^15.7.4",
