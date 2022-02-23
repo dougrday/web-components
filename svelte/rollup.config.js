@@ -42,8 +42,9 @@ export default {
 		svelte({
 			preprocess: sveltePreprocess({ sourceMap: !production }),
 			compilerOptions: {
+				customElement: true,
 				// enable run-time checks when not in production
-				dev: !production
+				dev: !production,
 			}
 		}),
 		// we'll extract any component CSS out into
