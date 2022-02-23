@@ -1,0 +1,25 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "esbuild index.ts --bundle --outfile=../out/index.js --watch --minify"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material/mwc-button": "^0.25.3",
+    "prop-types": "^15.8.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-to-webcomponent": "^1.5.1",
+    "react-web-component": "^2.0.2"
+  },
+  "devDependencies": {
+    "@types/prop-types": "^15.7.4",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "esbuild": "^0.14.23"
+  }
+}
