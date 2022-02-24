@@ -4,7 +4,7 @@
 <script lang="ts">
   import "@material/mwc-button";
   import { BehaviorSubject } from "rxjs";
-  import { map, takeUntil } from "rxjs/operators";
+  import { map } from "rxjs/operators";
   import { get_current_component, onDestroy } from "svelte/internal";
 
   const liked$ = new BehaviorSubject(false);

@@ -14,9 +14,11 @@
     <mc-like-button liketext="Woot!" unliketext="Unwoot!"></mc-like-button>
     <script defer src="/build/bundle.js"></script>
     <script>
-      document.querySelectorAll("mc-like-button").forEach(b => b.addEventListener("liked", e => {
-        console.log("Button was liked: " + e.detail);
-      }));
+      document.querySelectorAll("mc-like-button").forEach((b) =>
+        b.addEventListener("liked", (e) => {
+          console.log("Button was liked: " + e.detail);
+        })
+      );
     </script>
   </body>
 </html>
