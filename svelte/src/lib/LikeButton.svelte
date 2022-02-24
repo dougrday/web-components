@@ -6,16 +6,14 @@
   import { get_current_component } from "svelte/internal";
 
   let liked = false;
-  const likeText = $$props["liketext"] ?? "Like";
-  const unlikeText = $$props["unliketext"] ?? "Unlike";
-
+  const { liketext = "Like", unliketext = "Unlike", ...props } = $$props;
   const component = get_current_component();
   const handleClick = () => {
     liked = !liked;
     component?.dispatchEvent(new CustomEvent("liked", { detail: liked }));
   };
 
-  $: text = liked ? unlikeText : likeText;
+  $: text = liked ? unliketext : liketext;
 </script>
 
-<mwc-button on:click={handleClick}>{text}</mwc-button>
+<mwc-button {...props} on:click={handleClick}>{text}</mwc-button>
