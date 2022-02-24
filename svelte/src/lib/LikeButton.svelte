@@ -9,13 +9,13 @@
   const likeText = $$props["liketext"] ?? "Like";
   const unlikeText = $$props["unliketext"] ?? "Unlike";
 
+  const component = get_current_component();
   const handleClick = () => {
     liked = !liked;
+    component?.dispatchEvent(new CustomEvent("liked", { detail: liked }));
   };
 
-  const component = get_current_component();
   $: text = liked ? unlikeText : likeText;
-  $: component?.dispatchEvent(new CustomEvent("liked", { detail: liked }));
 </script>
 
 <mwc-button on:click={handleClick}>{text}</mwc-button>
