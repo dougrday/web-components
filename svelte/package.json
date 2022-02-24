@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@material/mwc-button": "^0.25.3",
+    "rxjs": "^7.5.4",
     "sirv-cli": "^2.0.0"
   }
 }

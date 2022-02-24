@@ -10,7 +10,13 @@
   </head>
 
   <body>
-    <mwc-like-button></mwc-like-button>
-	<script defer src="/build/bundle.js"></script>
+    <mc-like-button></mc-like-button>
+    <mc-like-button liketext="Woot!" unliketext="Unwoot!"></mc-like-button>
+    <script defer src="/build/bundle.js"></script>
+    <script>
+      document.querySelectorAll("mc-like-button").forEach(b => b.addEventListener("liked", e => {
+        console.log("Button was liked: " + e.detail);
+      }));
+    </script>
   </body>
 </html>
