@@ -12,4 +12,6 @@ python -m http.server
 
 Then, the following links will demonstrate how the different web component implementations function:
 
-* [React](http://localhost:8000/react)
+* [React (javascript)](http://localhost:8000/react)
+* [React (typescript)](http://localhost:8000/react-typescript)
+* See the "svelte" folder [README.md](svelte/README.md) for instructions on how to run it
