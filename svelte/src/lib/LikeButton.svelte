@@ -3,27 +3,19 @@
 
 <script lang="ts">
   import "@material/mwc-button";
-  import { BehaviorSubject } from "rxjs";
-  import { map } from "rxjs/operators";
-  import { get_current_component, onDestroy } from "svelte/internal";
+  import { get_current_component } from "svelte/internal";
 
-  const liked$ = new BehaviorSubject(false);
+  let liked = false;
   const likeText = $$props["liketext"] ?? "Like";
   const unlikeText = $$props["unliketext"] ?? "Unlike";
-  const text$ = liked$.pipe(map((liked) => (liked ? unlikeText : likeText)));
 
   const handleClick = () => {
-    liked$.next(!$liked$);
+    liked = !liked;
   };
 
   const component = get_current_component();
-  liked$.subscribe((liked) => {
-    component?.dispatchEvent(new CustomEvent("liked", { detail: liked }));
-  });
-
-  onDestroy(() => {
-    liked$.complete();
-  });
+  $: text = liked ? unlikeText : likeText;
+  $: component?.dispatchEvent(new CustomEvent("liked", { detail: liked }));
 </script>
 
-<mwc-button on:click={handleClick}>{$text$}</mwc-button>
+<mwc-button on:click={handleClick}>{text}</mwc-button>
