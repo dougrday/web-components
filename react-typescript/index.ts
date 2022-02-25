@@ -1,2 +1,1 @@
-import "./component1";
-import "./component2";
+import "./like-button-webcomponent";

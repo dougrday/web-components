@@ -11,12 +11,14 @@
 
   <body>
     <mc-like-button raised></mc-like-button>
-    <mc-like-button raised likeText="Woot!" unlikeText="Unwoot!" onchange="onChange(event)"></mc-like-button>
+    <mc-like-button raised likeText="Woot!" unlikeText="Unwoot!"></mc-like-button>
     <script defer src="/build/bundle.js"></script>
-    <script>
-      function onChange(e) {
-        console.log("Button was liked: " + e.detail);
-      }
+    <script>      
+      document.querySelectorAll("mc-like-button").forEach((b) =>
+        b.addEventListener("change", (e) => {
+          console.log("Button was liked: " + e.detail);
+        })
+      );
     </script>
   </body>
 </html>
