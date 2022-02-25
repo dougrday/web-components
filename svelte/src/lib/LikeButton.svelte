@@ -10,7 +10,7 @@
   const component = get_current_component();
   const handleClick = () => {
     liked = !liked;
-    component?.dispatchEvent(new CustomEvent("liked", { detail: liked }));
+    component?.dispatchEvent(new CustomEvent("change", { detail: liked }));
   };
 
   $: text = liked ? unliketext : liketext;
