@@ -1,21 +1,28 @@
 <template>
-    <button class="mdc-button foo-button">
-        <div class="mdc-button__ripple"></div>
-        <span class="mdc-button__label">Button</span>
-    </button>
+    <mwc-button id="myButton" :label="likedTextLabel" raised @click="toggleLike()"></mwc-button>
 </template>
 
 <script>
-export default {
-  props: {
-    title: {
-      type: String,
-      default: ""
-    },
-    subtitle: {
-      type: String,
-      default: ""
-    }
-  }
-};
+    import "@material/mwc-button";
+
+    export default {
+        props: {
+            likedText: String,
+        },
+        data() {
+            return {
+                liked: true,
+            }
+        },
+        computed: {
+            likedTextLabel() {
+                return this.liked ? this.likedText || "Like" : this.likedText ? `Un${this.likedText}` : "Unlike";
+            },
+        },
+        methods: {
+            toggleLike() {
+                this.liked = !this.liked;
+            }
+        }
+    };
 </script>

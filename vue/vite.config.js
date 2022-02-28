@@ -7,7 +7,7 @@ export default defineConfig({
         vue({
             template: {
                 compilerOptions: {
-                    // treat all tags with a dash as custom elements
+                    // treat all tags with a `mc-` as custom elements
                     isCustomElement: (tag) => tag.startsWith("mc-"),
                 },
             },
