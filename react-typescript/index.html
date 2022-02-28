@@ -21,9 +21,15 @@
   </head>
   <body>
     <div>
-        <mc-like-button-1 likedText="You Liked This"></mc-like-button-1>
-        <mc-like-button-2></mc-like-button-2>
+      <mc-like-button raised likedText="You Liked This"></mc-like-button>
     </div>
     <script src="../out/index.js"></script>
+    <script>      
+      document.querySelectorAll("mc-like-button").forEach((b) =>
+        b.addEventListener("change", (e) => {
+          console.log("Button was liked: " + e.detail);
+        })
+      );
+    </script>
   </body>
 </html>

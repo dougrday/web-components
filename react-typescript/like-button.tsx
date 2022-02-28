@@ -1,6 +1,6 @@
 import "@material/mwc-button";
 import * as React from "react";
-import * as PropTypes from "prop-types";
+import { useRef, useState } from "react";
 
 declare global {
   namespace JSX {
@@ -11,32 +11,31 @@ declare global {
 }
 
 export interface LikeButtonProps {
-  likedtext: string;
+  likedText?: string;
 }
 
-export interface LikeButtonState {
-  liked: boolean;
-}
+export const LikeButton = (props: LikeButtonProps) => {
+  const [liked, setLiked] = useState(false);
+  const buttonRef = useRef(null);
 
-export class LikeButton extends React.Component<
-  LikeButtonProps,
-  LikeButtonState
-> {
-  static propTypes = {
-    likedtext: PropTypes.string,
+  const { likedText, ...remainingProps } = props;
+  const text = liked ? likedText ?? "Unlike" : "Like";
+
+  const handleClick = () => {
+    setLiked(!liked);
+    buttonRef.current?.dispatchEvent(
+      new CustomEvent("change", {
+        detail: !liked,
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+      })
+    );
   };
 
-  constructor(props: LikeButtonProps) {
-    super(props);
-    this.state = { liked: false };
-  }
-
-  handleClick() {
-    this.setState({ liked: !this.state.liked });
-  }
-
-  render() {
-    const text = this.state.liked ? this.props.likedtext ?? "Unlike" : "Like";
-    return <mwc-button onClick={() => this.handleClick()}>{text}</mwc-button>;
-  }
-}
+  return (
+    <mwc-button ref={buttonRef} {...remainingProps} onClick={handleClick}>
+      {text}
+    </mwc-button>
+  );
+};

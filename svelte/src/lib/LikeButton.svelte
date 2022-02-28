@@ -1,21 +1,22 @@
 <!--Add this line to your web component-->
 <svelte:options tag="mc-like-button" />
 
+
 <script lang="ts">
   import "@material/mwc-button";
   import { get_current_component } from "svelte/internal";
 
+  export let liketext = "Like";
+  export let unliketext = "Unlike";
   let liked = false;
-  const likeText = $$props["liketext"] ?? "Like";
-  const unlikeText = $$props["unliketext"] ?? "Unlike";
 
   const component = get_current_component();
   const handleClick = () => {
     liked = !liked;
-    component?.dispatchEvent(new CustomEvent("liked", { detail: liked }));
+    component?.dispatchEvent(new CustomEvent("change", { detail: liked }));
   };
 
-  $: text = liked ? unlikeText : likeText;
+  $: text = liked ? unliketext : liketext;
 </script>
 
-<mwc-button on:click={handleClick}>{text}</mwc-button>
+<mwc-button {...$$props} on:click={handleClick}>{text}</mwc-button>
